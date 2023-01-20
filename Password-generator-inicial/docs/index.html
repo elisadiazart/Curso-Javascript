@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CAMBIAR POR styles.min.css al finalizar el proyecto -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Password Generator</title>
+  </head>
+
+  <body>
+    <main class="main">
+      <div class="generator-container">
+        <div class="generated-password-container">
+          <input type="text" id="generated-password" class="input" placeholder="P4$5W0rD!">
+        </div>
+        <form id="password-generator-options"
+        class="password-generator-options">
+          <label
+            for="password-generator-range"
+            class="password-generator-length"
+          >
+            Password Length
+            <span
+              id="password-generator-length-number"
+              class="password-generator-length-number"
+              >0</span
+            ></label>
+          <div class="range-container">
+            <input type="range" name="range" min="'0" max="20" step="1" value="0" class="range" id="password-generator-range"></div>
+          <div class="field">
+            <input type="checkbox" name="uppercase" id="uppercase" />
+            <label for="uppercase">Include Uppercase Letters</label>
+          </div>
+          <div class="field">
+            <input type="checkbox" name="lowercase" id="lowercase" />
+            <label for="lowercase">Include Lowercase Letters</label>
+          </div>
+          <div class="field">
+            <input type="checkbox" name="numbers" id="numbers" />
+            <label for="numbers">Include Numbers</label>
+          </div>
+          <div class="field">
+            <input type="checkbox" name="symbols" id="symbols" />
+            <label for="symbols">Include Symbols</label>
+          </div>
+          <div class="strength">
+            <span class="strength__title">STRENGTH</span>
+            <span id="strength-value" class="strength__value"></span>
+          </div>
+          <button id="button-generate" class="button" disabled>
+            Generate
+            <img src="assets/images/icon-arrow-right.svg" alt="arrow right" class="arrow" />
+          </button>
+        </form>
+      </div>
+      
+    </main>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

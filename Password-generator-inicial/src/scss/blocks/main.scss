@@ -1,0 +1,87 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.generator-container{
+  margin: 0;
+  width: 600px;
+}
+
+.generated-password-container{
+  background-color: var(--dark-grey);
+  font-size: var(--fz-xl);
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+.input{
+  border: none;
+  background-color: transparent;
+}
+
+.password-generator-options{
+  background-color: var(--dark-grey);
+  padding: 2rem;
+  color: var(--almost-white);
+  display: block;
+}
+
+.password-generator-length{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.password-generator-length-number{
+  font-size: var(--fz-xl);
+}
+
+.range{
+  &-container{
+    display: flex;
+  }
+  margin: auto;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.strength{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-size: var(--fz-xl);
+
+  &__value{
+    font-size: var(--fz-l)
+  }
+}
+
+.button{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  padding: 1rem
+}
+
+.button:disabled{
+  background-color: var(--grey);
+}
+
+.arrow{
+  padding-left: 1rem;
+}
+
+.input{
+  color: var(--grey);
+  &::placeholder{
+    color: var(--grey)
+  }
+}

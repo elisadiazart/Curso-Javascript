@@ -1,0 +1,17 @@
+
+body{
+    height: 1000vh;
+    margin: 0;
+}
+
+h1{
+    position: fixed;
+    padding: 1rem;
+}
+
+.top-element{
+    position: fixed;
+    height: 8px;
+    width: 100vw;
+    background-color: pink;
+}
