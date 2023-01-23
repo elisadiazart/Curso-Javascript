@@ -1,6 +1,8 @@
 const gameQuestion = document.getElementById('game-question');
 const answersContainer = document.getElementById('answers');
 const startButton = document.getElementById('start-button');
+const timerElement = document.getElementById('remaining-time');
+const resetButton = document.getElementById('reset-button');
 
 const QUESTIONS = {
   programming: [
@@ -143,13 +145,48 @@ const printRandomQuestion = () => {
     fragment.append(newAnswer);
   }
   answersContainer.append(fragment);
+
+  setRemainingTime();
 };
 
 const themePointsPrint = () => {
   score[question.theme]++;
-  console.log(question.theme);
   document.getElementById(`${question.theme}-score`).textContent =
     score[question.theme];
+};
+
+const printResult = () => {
+  clearInterval(intervalContent);
+  timerElement.textContent = '';
+  let result = Object.values(score).reduce((acc, current) => acc + current);
+  gameQuestion.textContent = 'TERMINASTE';
+  answersContainer.innerHTML = '';
+  const results = document.createElement('div');
+  results.textContent = `Has acertado ${result} preguntas de ${allQuestions.length}.`;
+  gameQuestion.append(results);
+  results.classList.add('result');
+};
+
+const setRemainingTime = () => {
+  let remainingTime = 5;
+  intervalContent = setInterval(() => {
+    remainingTime -= 0.1;
+    timerElement.textContent = remainingTime.toFixed(2);
+    if (remainingTime < 0.1) {
+      clearInterval(intervalContent);
+      printRandomQuestion();
+    }
+  }, 100);
+};
+
+const resetGame = () => {
+  allQuestions.forEach(question => (question.hasAnswered = false));
+  for (const key in score) {
+    score[key] = 0;
+    document.getElementById(`${key}-score`).textContent = 0;
+  }
+  printRandomQuestion();
+  resetButton.hidden = true;
 };
 
 startButton.addEventListener('click', () => {
@@ -162,13 +199,17 @@ answersContainer.addEventListener('click', e => {
     themePointsPrint();
   }
   question.hasAnswered = true;
-  printRandomQuestion();
-
+  clearInterval(intervalContent);
   if (questionsFiltered.length === 1) {
-    gameQuestion.textContent = 'TERMINASTE';
-    answersContainer.innerHTML = '';
-    const results = document.createElement('div');
-    results.textContent = `Has acertado 3 preguntas de ${allQuestions.length}`;
-    answersContainer.append(results);
+    printResult();
+    resetButton.hidden = false;
+  } else {
+    printRandomQuestion();
   }
 });
+
+resetButton.addEventListener('click', () => {
+  resetGame();
+});
+
+resetButton.hidden = true;
